@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Te Amo</title>
+  <style>
+    body {
+      margin: 0;
+      background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+      overflow: hidden;
+      font-family: 'Arial', sans-serif;
+    }
+
+    h1 {
+      position: absolute;
+      top: 2vh;
+      width: 100%;
+      text-align: center;
+      font-size: 4vmin;
+      color: #fff;
+      animation: fadeIn 2s ease-out forwards;
+      z-index: 10;
+    }
+
+    .shooting-stars {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .shooting-star {
+      position: absolute;
+      width: 2px;
+      height: 80px;
+      background: linear-gradient(-45deg, white, rgba(255, 255, 255, 0));
+      animation: shooting-star 2s linear;
+    }
+
+    @keyframes shooting-star {
+      0% {
+        transform: translateX(0) translateY(0);
+        opacity: 1;
+      }
+      100% {
+        transform: translateX(-600px) translateY(600px);
+        opacity: 0;
+      }
+    }
+
+    .gallery {
+      position: absolute;
+      top: 20vh;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2vmin;
+      max-width: 90vw;
+    }
+
+    .title {
+  color: black; /* Esto hace que el texto sea negro */
+  text-align: center;
+  font-size: 4rem;
+  font-family: 'Arial', sans-serif;
+  margin-top: 2rem;
+}
+
+
+    .gallery img {
+      width: 20vmin;
+      height: 20vmin;
+      object-fit: cover;
+      border-radius: 2vmin;
+      opacity: 0;
+      transform: scale(0.7);
+      animation: fadeInGrow 1s ease forwards;
+    }
+
+   .ramo {
+  position: absolute;
+  top: 10%;
+  width: 500px; 
+  z-index: 50;
+}
+
+.ramo--izquierdo {
+  left: 0;
+}
+
+.ramo--derecho {
+  right: 0;
+  transform: scaleX(-1); 
+}
+
+
+    .gallery img:nth-child(1) { animation-delay: 0.5s; }
+    .gallery img:nth-child(2) { animation-delay: 1s; }
+    .gallery img:nth-child(3) { animation-delay: 1.5s; }
+    .gallery img:nth-child(4) { animation-delay: 2s; }
+    .gallery img:nth-child(5) { animation-delay: 2.5s; }
+    .gallery img:nth-child(6) { animation-delay: 3s; }
+
+    @keyframes fadeInGrow {
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <img src="imagenes/ramo-izquierdo.png" class="ramo ramo--izquierdo" alt="Ramo izquierdo">
+<img src="imagenes/ramo-izquierdo.png" class="ramo ramo--derecho" alt="Ramo derecho">
+
+  <h1 class="title">Te amo mucho ❤️‍🩹</h1>
+
+  <div class="shooting-stars"></div>
+
+  <div class="gallery">
+  <img src="imagenes/foto1.jpg" alt="foto 1">
+  <img src="imagenes/foto2.jpg" alt="foto 2">
+  <img src="imagenes/foto3.jpg" alt="foto 3">
+  <img src="imagenes/foto4.jpg" alt="foto 4">
+  <img src="imagenes/foto5.jpg" alt="foto 5">
+  <img src="imagenes/foto6.jpg" alt="foto 6">
+</div>
+
+
+  <script>
+    function createShootingStar() {
+      const star = document.createElement('div');
+      star.className = 'shooting-star';
+      star.style.top = Math.random() * 60 + '%';
+      star.style.left = Math.random() * 100 + '%';
+      star.style.animationDuration = (Math.random() * 1.5 + 2) + 's';
+      document.querySelector('.shooting-stars').appendChild(star);
+
+      setTimeout(() => {
+        star.remove();
+      }, 3000);
+    }
+
+    setInterval(() => {
+      if (Math.random() > 0.3) {
+        createShootingStar();
+      }
+    }, Math.random() * 5000 + 3000);
+  </script>
+</body>
+</html>

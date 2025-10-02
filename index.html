@@ -2,24 +2,25 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Te Amo</title>
   <style>
     body {
       margin: 0;
       background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
-      overflow: hidden;
+      overflow-x: hidden;
       font-family: 'Arial', sans-serif;
     }
 
-    h1 {
-      position: absolute;
-      top: 2vh;
+    h1.title {
+      margin-top: 2vh;
       width: 100%;
       text-align: center;
-      font-size: 4vmin;
-      color: #000; /* Negro */
+      font-size: 5vw;
+      color: black;
       animation: fadeIn 2s ease-out forwards;
       z-index: 10;
+      position: relative;
     }
 
     .shooting-stars {
@@ -50,49 +51,24 @@
     }
 
     .gallery {
-      position: absolute;
-      top: 20vh;
-      left: 50%;
-      transform: translateX(-50%);
+      margin-top: 10vh;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 2vmin;
-      max-width: 90vw;
-    }
-
-    .title {
-      color: black;
-      text-align: center;
-      font-size: 4rem;
-      font-family: 'Arial', sans-serif;
-      margin-top: 2rem;
+      gap: 4vw;
+      padding: 2vw;
     }
 
     .gallery img {
-      width: 20vmin;
-      height: 20vmin;
+      width: 40vw;
+      height: 40vw;
+      max-width: 150px;
+      max-height: 150px;
       object-fit: cover;
-      border-radius: 2vmin;
+      border-radius: 10px;
       opacity: 0;
       transform: scale(0.7);
       animation: fadeInGrow 1s ease forwards;
-    }
-
-    .ramo {
-      position: absolute;
-      top: 10%;
-      width: 500px;
-      z-index: 50;
-    }
-
-    .ramo--izquierdo {
-      left: 0;
-    }
-
-    .ramo--derecho {
-      right: 0;
-      transform: scaleX(-1); /* Reflejado horizontalmente */
     }
 
     .gallery img:nth-child(1) { animation-delay: 0.5s; }
@@ -101,6 +77,23 @@
     .gallery img:nth-child(4) { animation-delay: 2s; }
     .gallery img:nth-child(5) { animation-delay: 2.5s; }
     .gallery img:nth-child(6) { animation-delay: 3s; }
+
+    .ramo {
+      position: absolute;
+      top: 5%;
+      width: 30vw;
+      max-width: 120px;
+      z-index: 5;
+    }
+
+    .ramo--izquierdo {
+      left: 0;
+    }
+
+    .ramo--derecho {
+      right: 0;
+      transform: scaleX(-1);
+    }
 
     @keyframes fadeInGrow {
       to {
@@ -112,6 +105,18 @@
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(-20px); }
       to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Opcional: mejora para pantallas muy pequeñas */
+    @media (max-width: 400px) {
+      .gallery img {
+        width: 70vw;
+        height: 70vw;
+      }
+
+      .ramo {
+        width: 25vw;
+      }
     }
   </style>
 </head>
@@ -127,14 +132,14 @@
   <!-- Estrellas fugaces -->
   <div class="shooting-stars"></div>
 
-  <!-- Galería de fotos -->
+  <!-- Galería -->
   <div class="gallery">
-    <img src="foto1.jpg" alt="foto 1">
-    <img src="foto2.jpg" alt="foto 2">
-    <img src="foto3.jpg" alt="foto 3">
-    <img src="foto4.jpg" alt="foto 4">
-    <img src="foto5.jpg" alt="foto 5">
-    <img src="foto6.jpg" alt="foto 6">
+    <img src="foto1.jpg" alt="Foto 1">
+    <img src="foto2.jpg" alt="Foto 2">
+    <img src="foto3.jpg" alt="Foto 3">
+    <img src="foto4.jpg" alt="Foto 4">
+    <img src="foto5.jpg" alt="Foto 5">
+    <img src="foto6.jpg" alt="Foto 6">
   </div>
 
   <!-- Script de estrellas fugaces -->
@@ -158,6 +163,5 @@
       }
     }, Math.random() * 5000 + 3000);
   </script>
-
 </body>
 </html>
